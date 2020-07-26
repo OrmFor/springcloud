@@ -1,6 +1,6 @@
 package com.atguigu.springcloud.controller;
 
-import com.atguigu.springcloud.service.PaymentService;
+import com.atguigu.springcloud.services.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +33,25 @@ public class PaymentController {
         log.info("*******result:"+result);
         return result;
     }
+
+
+    //===服务熔断
+    @GetMapping("/payment/circuit/{id}")
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id){
+        String result = paymentService.paymentCircuitBreaker(id);
+        log.info("*******result:"+result);
+        return result;
+    }
+
+
+    //===限流
+    @GetMapping("/payment/reject")
+    public String paymentReject(){
+        String result = paymentService.paymentReject();
+        log.info("*******result:"+result);
+        return result;
+    }
+
 }
 
 
