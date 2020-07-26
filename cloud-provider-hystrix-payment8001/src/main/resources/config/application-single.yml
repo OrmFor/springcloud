@@ -15,8 +15,6 @@ mybatis:
   mapperLocations: classpath:mapper/*.xml
   type-aliases-package: com.atguigu.springcloud.entities
 
-
-
 eureka:
   client:
     register-with-eureka: true

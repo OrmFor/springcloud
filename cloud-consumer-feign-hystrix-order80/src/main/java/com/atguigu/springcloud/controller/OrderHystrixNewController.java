@@ -50,6 +50,7 @@ public class OrderHystrixNewController {
     public String payment_Global_FallbackMethod(){
         return "Global异常处理信息，请稍后再试,(┬＿┬)";
     }
+
 }
 
 

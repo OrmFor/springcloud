@@ -10,6 +10,9 @@
   <packaging>pom</packaging>
 
   <modules>
+    <module>cloud-gateway-gateway9527</module>
+    <module>cloud-gateway-gateway9528</module>
+    <module>cloud-consumer-hystrix-dashboard9001</module>
     <module>cloud-provider-hystrix-payment8001</module>
     <module>cloud-provider-payment8001</module>
     <module>cloud-provider-payment8002</module>
@@ -19,7 +22,7 @@
     <module>cloud-consumer-feign-hystrix-order80</module>
     <module>cloud-consumer-zk-order80</module>
     <module>cloud-consumer-order81</module>
-      <module>cloud-api-common</module>
+    <module>cloud-api-common</module>
     <module>cloud-eureka-server7001</module>
     <module>cloud-eureka-server7002</module>
   </modules>
