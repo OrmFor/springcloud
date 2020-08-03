@@ -17,44 +17,44 @@ import java.util.concurrent.TimeUnit;
 public class PaymentController {
 
     @Value("${server.port}")
-    private String serverPort ;
+    private String serverPort;
 
     @Autowired
     private PaymentService paymentService;
 
 
     @PostMapping(value = "/payment/create")
-    public CommonResult create(@RequestBody Payment payment){
-       int result = paymentService.create(payment);
-       if(result > 0){
-           log.info(MessageFormat.format("***********{0}***************",serverPort));
-           return new CommonResult(200,"插入数据库成功",result);
-       }else{
-           return new CommonResult(400,"插入数据库失败",null);
+    public CommonResult create(@RequestBody Payment payment) {
+        int result = paymentService.create(payment);
+        if (result > 0) {
+            log.info(MessageFormat.format("***********{0}***************", serverPort));
+            return new CommonResult(200, "插入数据库成功", result);
+        } else {
+            return new CommonResult(400, "插入数据库失败", null);
 
-       }
+        }
     }
 
 
     @GetMapping(value = "/payment/get/{id}")
-    public CommonResult getPaymentById(@PathVariable("id") Long id){
+    public CommonResult getPaymentById(@PathVariable("id") Long id) {
         Payment result = paymentService.getPaymentById(id);
-        if(result != null){
-            log.info(MessageFormat.format("***********{0}***************",serverPort));
-            return new CommonResult(200,"插入数据库成功",result);
-        }else{
-            return new CommonResult(400,"没有对应记录，查询ID:"+id,null);
+        if (result != null) {
+            log.info(MessageFormat.format("***********{0}***************", serverPort));
+            return new CommonResult(200, "插入数据库成功", result);
+        } else {
+            return new CommonResult(400, "没有对应记录，查询ID:" + id, null);
 
         }
     }
 
     @GetMapping("/payment/lb")
-    public String getServerPort(){
+    public String getServerPort() {
         return this.serverPort;
     }
 
     @GetMapping("/payment/feign/timeout")
-    public String getServerPortTimeOut(){
+    public String getServerPortTimeOut() {
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
@@ -62,4 +62,12 @@ public class PaymentController {
         }
         return this.serverPort;
     }
+
+
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin() {
+       // throw new RuntimeException("error");
+        return "hi ,i'am paymentzipkin server fall back，welcome to atguigu，O(∩_∩)O哈哈~";
+    }
 }
+
